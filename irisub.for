@@ -368,6 +368,7 @@ C*****************************************************************
      &           NMF1,NME,NMD,MM,MLAT,MLONG,NMF2S,NMES,INVDPC,
      &           INVDIP_OLD,INVDPC_OLD
       CHARACTER  FILNAM*12
+      CHARACTER(LEN=1024) :: IRIPATH
 c-web-for webversion
 c      CHARACTER FILNAM*53
 
@@ -1143,7 +1144,7 @@ C
 104         FORMAT('ccir',I2,'.asc')
 c-web-for webversion
 c104     FORMAT('/var/www/omniweb/cgi/vitmo/IRI/ccir',I2,'.asc')
-        OPEN(IUCCIR,FILE=FILNAM,STATUS='OLD',ERR=8448,
+        OPEN(IUCCIR,FILE=IRIPATH(FILNAM),STATUS='OLD',ERR=8448,
      &          FORM='FORMATTED')
         READ(IUCCIR,4689) F2,FM3
 4689    FORMAT(1X,4E15.8)
@@ -1156,7 +1157,7 @@ C
 1144          FORMAT('ursi',I2,'.asc')
 c-web-for webversion
 c1144    FORMAT('/var/www/omniweb/cgi/vitmo/IRI/ursi',I2,'.asc')
-          OPEN(IUCCIR,FILE=FILNAM,STATUS='OLD',ERR=8448,
+          OPEN(IUCCIR,FILE=IRIPATH(FILNAM),STATUS='OLD',ERR=8448,
      &         FORM='FORMATTED')
           READ(IUCCIR,4689) F2
           CLOSE(IUCCIR)

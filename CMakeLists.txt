@@ -39,13 +39,16 @@ DOWNLOAD_URL(
 DOWNLOAD_URL(
     http://irimodel.org/indices/ig_rz.dat
     "${CMAKE_CURRENT_BINARY_DIR}/ig_rz.dat")
-    
+
 FILE(GLOB LIB_SOURCES "*.for")
 LIST(FILTER LIB_SOURCES EXCLUDE  REGEX "iritest\\.for")
-
 ADD_LIBRARY(iri STATIC ${LIB_SOURCES})
+INSTALL(TARGETS iri DESTINATION lib)
 
-file(GLOB TEST_SOURCES "iritest.for")
-add_executable(iritest ${TEST_SOURCES})
-target_link_libraries(iritest iri)
-add_test(NAME iritest COMMAND "${EXECUTABLE_OUTPUT_PATH}/iritest")
+FILE(GLOB TEST_SOURCES "iritest.for")
+ADD_EXECUTABLE(iritest ${TEST_SOURCES})
+TARGET_LINK_LIBRARIES(iritest iri)
+ADD_TEST(NAME iritest COMMAND "${EXECUTABLE_OUTPUT_PATH}/iritest")
+
+FILE(GLOB DATA "*.dat")
+INSTALL(FILES ${DATA} DESTINATION share/iri)

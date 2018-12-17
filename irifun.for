@@ -8672,10 +8672,12 @@ c----------------------------------------------------------------
 
            integer	iyst,iyend,iymst,iupd,iupm,iupy,imst,imend
            real		aig(806),arz(806)
+           character(len=1024) :: iripath
            
            common /igrz/aig,arz,iymst,iymend
 
-           open(unit=12,file='ig_rz.dat',FORM='FORMATTED',status='old')
+           open(unit=12,file=iripath('ig_rz.dat'),FORM='FORMATTED',
+     & status='old')
 
 c-web- special for web version
 c            open(unit=12,file=
@@ -8854,8 +8856,11 @@ C
         INTEGER		aap(23000,9),iiap(8)
         DIMENSION 	af107(23000,3)
         COMMON		/apfa/aap,af107,n
+        CHARACTER(LEN=1024) :: IRIPATH
 
-        Open(13,FILE='apf107.dat',FORM='FORMATTED',STATUS='OLD')
+
+        Open(13,FILE=IRIPATH('apf107.dat'),FORM='FORMATTED',
+     $       STATUS='OLD')
 c-web-sepcial vfor web version
 c      OPEN(13,FILE='/var/www/omniweb/cgi/vitmo/IRI/apf107.dat',
 c     *    FORM='FORMATTED',STATUS='OLD')

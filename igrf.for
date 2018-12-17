@@ -706,6 +706,7 @@ C ===============================================================
         CHARACTER  FSPEC*(*), FOUT*80                                    
         DIMENSION       GH(196)
         LOGICAL		mess 
+        CHARACTER(LEN=1024) :: IRIPATH
         COMMON/iounit/konsol,mess        
         do 1 j=1,196  
 1          GH(j)=0.0
@@ -718,7 +719,8 @@ C ---------------------------------------------------------------
  667    FORMAT(A13)
 c-web-for webversion
 c 667    FORMAT('/var/www/omniweb/cgi/vitmo/IRI/',A13)
-        OPEN (IU, FILE=FOUT, STATUS='OLD', IOSTAT=IER, ERR=999)     
+        OPEN (IU, FILE=IRIPATH(FOUT), STATUS='OLD', IOSTAT=IER,
+     $        ERR=999)     
         READ (IU, *, IOSTAT=IER, ERR=999)                            
         READ (IU, *, IOSTAT=IER, ERR=999) NMAX, ERAD, XMYEAR 
         nm=nmax*(nmax+2)                
